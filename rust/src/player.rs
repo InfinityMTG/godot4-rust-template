@@ -1,4 +1,4 @@
-use godot::engine::Sprite2D;
+use godot::engine::{RandomNumberGenerator, Sprite2D};
 use godot::prelude::*;
 
 #[derive(GodotClass)]
@@ -15,6 +15,7 @@ use godot::engine::ISprite2D;
 impl ISprite2D for Player {
     fn init(base: Base<Sprite2D>) -> Self {
         godot_print!("Hello, World!"); // Prints to the Godot console
+        ready();
 
         Self {
             speed: 400.0,
@@ -28,5 +29,15 @@ impl ISprite2D for Player {
 
         let radians = (self.angular_speed * delta) as f32;
         self.base_mut().rotate(radians);
+
+        let rotation = self.base_mut().get_rotation();
+        let velocity = Vector2::UP.rotated(rotation) * self.speed as f32;
+        self.base_mut().translate(velocity * delta as f32);
     }
+}
+
+fn ready() {
+    let mut rng = RandomNumberGenerator::new_gd();
+    rng.randomize();
+    godot_print!("{:#?}", rng.randf_range(-10.0, 10.0));
 }

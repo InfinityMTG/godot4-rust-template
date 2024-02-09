@@ -5,5 +5,9 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="Player" parent="."]
-position = Vector2(560, 320)
+position = Vector2(366, 234)
+texture = ExtResource("1_dqesq")
+
+[node name="Player2" type="Player" parent="."]
+position = Vector2(698, 390)
 texture = ExtResource("1_dqesq")

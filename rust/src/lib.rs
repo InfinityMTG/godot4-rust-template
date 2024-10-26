@@ -1,4 +1,3 @@
-use godot::classes::Sprite2D;
 use godot::prelude::*;
 struct MyExtension;
 

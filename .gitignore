@@ -31,5 +31,13 @@ Cargo.lock
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
 
+<<<<<<< HEAD
 # Ignore .DS_Store
 **/.DS_Store
+=======
+# macOS File organisation ignore
+**/.DS_Store
+
+# Ignore exported game
+**/*.dmg
+>>>>>>> cfd1976 (revert and add dmg to gitignore)

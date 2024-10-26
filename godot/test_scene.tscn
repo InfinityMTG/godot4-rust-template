@@ -9,5 +9,5 @@ position = Vector2(366, 234)
 texture = ExtResource("1_dqesq")
 
 [node name="Player2" type="Player" parent="."]
-position = Vector2(698, 390)
+position = Vector2(864, 153)
 texture = ExtResource("1_dqesq")

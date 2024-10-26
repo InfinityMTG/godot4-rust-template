@@ -1,17 +1,10 @@
-use godot::engine::Sprite2D;
+use godot::classes::Sprite2D;
 use godot::prelude::*;
 struct MyExtension;
 
 #[gdextension]
 unsafe impl ExtensionLibrary for MyExtension {}
-<<<<<<< HEAD
-<<<<<<< HEAD
-use godot::engine::RandomNumberGenerator;
-=======
->>>>>>> c18a55c (lib.rs updated to use new module layout)
-=======
 use godot::classes::RandomNumberGenerator;
->>>>>>> cfd1976 (revert and add dmg to gitignore)
 
 mod player;
 

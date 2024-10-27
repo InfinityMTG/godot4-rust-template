@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvs22cr7hkxer"]
+
+[ext_resource type="Texture2D" uid="uid://dk235j0gi1kmv" path="res://icon.svg" id="1_dqesq"]
+[ext_resource type="PackedScene" uid="uid://1yw0jqkhgutq" path="res://falling_object.tscn" id="2_c5dd8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4h1n"]
+size = Vector2(120, 120)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(1528, 537)
+
+[node name="Player4" type="Player" parent="."]
+position = Vector2(40, 250)
+texture = ExtResource("1_dqesq")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(17.87, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(10.13, 9)
+texture = ExtResource("1_dqesq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(10.13, 7)
+shape = SubResource("RectangleShape2D_v4h1n")
+
+[node name="FallingObject" parent="." instance=ExtResource("2_c5dd8")]
+
+[node name="SpawnFallingObject" type="SpawnFallingObject" parent="."]

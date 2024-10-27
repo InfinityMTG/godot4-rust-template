@@ -13,11 +13,18 @@ config_version=5
 config/name="tutorial"
 run/main_scene="res://test_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/mode=2
+
+[physics]
+
+2d/physics_engine="Rapier2D"
 
 [rendering]
 

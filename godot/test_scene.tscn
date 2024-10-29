@@ -1,29 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvs22cr7hkxer"]
+[gd_scene load_steps=6 format=3 uid="uid://dvs22cr7hkxer"]
 
 [ext_resource type="Texture2D" uid="uid://dk235j0gi1kmv" path="res://icon.svg" id="1_dqesq"]
 [ext_resource type="PackedScene" uid="uid://1yw0jqkhgutq" path="res://falling_object.tscn" id="2_c5dd8"]
+[ext_resource type="PackedScene" uid="uid://cvo47c6y2mr4y" path="res://static_body_2d.tscn" id="3_ihnao"]
+[ext_resource type="PackedScene" uid="uid://bgxwnylmgl08j" path="res://rigid_body_test.tscn" id="4_arhxk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4h1n"]
 size = Vector2(120, 120)
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(1528, 537)
+position = Vector2(1367, 993)
 
 [node name="Player4" type="Player" parent="."]
-position = Vector2(40, 250)
+position = Vector2(-234, 27)
 texture = ExtResource("1_dqesq")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(17.87, 0)
+position = Vector2(-4.99999, -11)
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(10.13, 9)
+position = Vector2(-298, -602)
 texture = ExtResource("1_dqesq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(10.13, 7)
+position = Vector2(-304, -607)
 shape = SubResource("RectangleShape2D_v4h1n")
 
 [node name="FallingObject" parent="." instance=ExtResource("2_c5dd8")]
+position = Vector2(-249, 201)
 
 [node name="SpawnFallingObject" type="SpawnFallingObject" parent="."]
+position = Vector2(23, 195)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_ihnao")]
+position = Vector2(271, 168)
+
+[node name="RigidBodyTest" parent="." instance=ExtResource("4_arhxk")]
+
+[editable path="FallingObject"]

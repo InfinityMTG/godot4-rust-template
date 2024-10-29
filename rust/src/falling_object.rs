@@ -13,6 +13,8 @@ impl FallingObject {
     #[func]
     pub fn start(&mut self, pos: Vector2) {
         self.base_mut().set_global_position(pos);
+        self.base_mut()
+            .set_constant_force(Vector2 { x: 1.0, y: 1.0 });
         self.base_mut().show();
     }
 }
@@ -24,8 +26,8 @@ impl IRigidBody2D for FallingObject {
     }
     fn process(&mut self, delta: f64) {
         let mut current_force = self.base().get_constant_force().clone();
-        current_force.x += 1.0;
-        current_force.y += 1.0;
+        current_force.x += 5.0;
+        current_force.y += 5.0;
         self.base_mut().set_constant_force(current_force);
         self.base_mut().set_gravity_scale(0.0);
         self.base_mut().set_contact_monitor(true);

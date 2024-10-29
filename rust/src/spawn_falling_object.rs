@@ -3,6 +3,7 @@ use godot::classes::InputEvent;
 use godot::classes::InputEventMouseButton;
 use godot::classes::Node2D;
 use godot::classes::RigidBody2D;
+use godot::classes::RigidBody3D;
 use godot::global::MouseButton;
 use godot::prelude::*;
 
@@ -36,10 +37,15 @@ impl INode2D for SpawnFallingObject {
     }
     fn process(&mut self, delta: f64) {
         for o in self.base_mut().get_children().iter_shared() {
-            if let Ok(mut f) = o.try_cast::<FallingObject>() {
+            if let Ok(mut f) = o.clone().try_cast::<FallingObject>() {
                 let pos = f.get_global_position();
-                if pos.x > 200.0 || pos.y > 200.0 {
+                if pos.x > 2560.0 || pos.y > 1440.0 {
                     f.queue_free();
+                }
+            } else if let Ok(mut r) = o.try_cast::<RigidBody2D>() {
+                let pos = r.get_global_position();
+                if pos.x > 2560.0 || pos.y > 1440.0 {
+                    r.queue_free();
                 }
             }
         }
@@ -48,18 +54,18 @@ impl INode2D for SpawnFallingObject {
         // godot_print!("Trying to spawn object");
         self.falling_object_scene = load("res://falling_object.tscn");
         self.rigid_body_scene = load("res://rigid_body_test.tscn");
-        godot_print!("Loaded self.rigid_body_scene");
+        // godot_print!("Loaded self.rigid_body_scene");
     }
 }
 impl SpawnFallingObject {
     fn spawn(&mut self, spawn_global_position: Vector2) {
-        godot_print!("{:#?}", self.base_mut().get_children());
+        // godot_print!("{:#?}", self.base_mut().get_children());
         let mut instance = self.falling_object_scene.instantiate_as::<FallingObject>();
         instance.set_global_position(spawn_global_position);
         self.base_mut().add_child(&instance);
     }
     fn spawn_rigid_body_scene(&mut self, spawn_global_position: Vector2) {
-        godot_print!("Trying to spawn object");
+        // godot_print!("Trying to spawn object");
         let mut instance = self.rigid_body_scene.instantiate_as::<RigidBody2D>();
         instance.set_global_position(spawn_global_position);
         self.base_mut().add_child(&instance);
